@@ -101,7 +101,7 @@
 		printf("%s\n", strerror(errno));
 	}
 
-	
+
 
 	else
 	{
@@ -154,4 +154,111 @@
 //	return 0;
 //}
 
+//柔性数组
+/*struct S
+{
+	int a;
+	int b[];
+};
+int main()
+{
+	//结构体初始化
+	//给a和b创造空间
+	struct S *s = NULL;
+	s = (struct S*)malloc(sizeof(int) + 5 * sizeof(int));
+	if (s != NULL)
+	{
+		//赋值
+		s->a = 5;
+		int i = 0;
+		for (i = 0; i < 5; i++)
+		{
+			*(s->b + i) = i;
+		}
+		for (i = 0; i < 5; i++)
+		{
+			printf("%d ", s->b[i]);
+		}
+	}
+	printf("\n");
+	s = realloc(s, 44);
+	if (s != NULL)
+	{
+		//赋值
+		int i = 0;
+		for (i=5;i<10;i++)
+		{
+			*(s->b + i) = i;
+		}
 
+		for (i = 0; i < 10; i++)
+		{
+			printf("%d ", s->b[i]);
+		}
+	}
+	free(s);
+	s=NULL;
+
+	
+	
+	return 0;
+}*/
+
+struct S
+{
+	int a;
+	int* arr;
+};
+int main()
+{
+	//结构体初始化
+	//给a和b创造空间
+	struct S* s = NULL;
+	//s开辟内存
+	s = (struct S*)malloc(sizeof(struct S));
+
+	//s->arr开辟内存
+	s->arr = malloc(5 * sizeof(int));
+	
+	if (s != NULL)
+	{
+		//赋值
+		s->a = 5;
+		int i = 0;
+		for (i = 0; i < 5; i++)
+		{
+			*(s->arr + i) = i;
+		}
+		for (i = 0; i < 5; i++)
+		{
+			printf("%d ", s->arr[i]);
+		}
+	}
+	printf("\n");
+
+	//s->arr重新开辟内存
+	s->arr = realloc(s->arr,40 );
+	if (s->arr != NULL)
+	{
+		//赋值
+		int i = 0;
+		for (i = 5; i < 10; i++)
+		{
+			*(s->arr + i) = i;
+		}
+
+		for (i = 0; i < 10; i++)
+		{
+			printf("%d ", s->arr[i]);
+		}
+	}
+	free(s->arr);
+	s->arr = NULL;
+	free(s);
+	s = NULL;
+	
+
+
+
+	return 0;
+}
