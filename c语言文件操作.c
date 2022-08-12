@@ -144,19 +144,100 @@
 
 
 //sscanf 和 sprintf 从字符串里面读和获取
-struct Student
-{
-	int a;
-	float b;
-	char c[];
-};
+//struct Student
+//{
+//	int a;
+//	float b;
+//	char c[];
+//};
+//
+//int main()
+//{
+//	struct Student s = { 1024,3.14,"abcdef" };  //定义结构体s
+//	char* buf = { 0 };
+//	sscanf(buf, "%d%f%s", &(s.a), &(s.b), &(s.c));   //将结构体s的内容写入到buf中，并转换为s格式
+//	printf("%s", buf);
+//	sprintf(buf, "%d %f %s", s.a, s.b, s.c);
+//	return 0;
+//}
 
+
+
+//二进制形式写入、写出文件
+//fwrite and fwrite
+//struct Student
+//{
+//	char sex;
+//	int num;
+//	char name[10];
+//};
+//int main()
+//{
+//	struct Student s = { 'm',20210732,"张三" };      //定义结构体
+//	FILE* pf = fopen("test.txt", "wb");      //创建文件
+//	if (pf == NULL)
+//	{
+//		return 0;
+//	}
+//	//写入文件
+//	fwrite(&s, sizeof(struct Student), 1, pf);     
+//	//把地址s的内容，以1个Student结构体大小写入指针pf指向的文件中
+//	//关闭文件
+//	fclose(pf);
+//	pf = NULL;
+//
+//	//再把文件的内容写出来
+//	struct Student tmp = { 0 };
+//	FILE* pf2 = fopen("test.txt", "rb");
+//	if (pf2 == NULL)
+//		return 0;
+//	//读取文件
+//	fread(&tmp, sizeof(struct Student), 1, pf2);
+//	//把pf2地址指向的文件,以1个结构体大小的空间，写入到结构体tmp之中
+//	printf("%c %d %s\n", tmp.sex, tmp.num, tmp.name);
+//	fclose(pf2);
+//	pf2 = NULL;
+//	return 0;
+//}
+
+//数据库
+//MySQL
+//c语言操作MySQL数据库
+
+//文件的顺序读写
+
+
+//文件的随机读写
+//fseek
+//根据文件指针的位置和偏移量来定位文件指针
+//a b c d e f读取e
 int main()
 {
-	struct Student s = { 1024,3.14,"abcdef" };  //定义结构体s
-	char* buf = { 0 };
-	sscanf(buf, "%d%f%s", &(s.a), &(s.b), &(s.c));   //将结构体s的内容写入到buf中，并转换为s格式
-	printf("%s", buf);
-	sprintf(buf, "%d %f %s", s.a, s.b, s.c);
+	FILE* pf = fopen("test.txt", "r");
+	if (pf == NULL)
+	{
+		return 0;
+	}
+	//改变指针所在位置
+	fseek(pf, 4, SEEK_SET);
+	//打印
+	printf("%c\n", fgetc(pf));
+
+	//ftell
+	//返回文件指针相对起始位置的偏移量
+	int i = ftell(pf);
+	printf("%d\n", i);
+
+	fclose(pf);
+	pf = NULL;
+
+	
+
+	 
 	return 0;
 }
+
+
+
+//ftell
+//返回文件指针相对起始位置的偏移量
