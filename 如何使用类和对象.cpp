@@ -203,42 +203,81 @@ int main()
 //如果用户不指定实参值，编译系统就使形参取默认值
 //一般不应同时使用构造函数的重载和有默认参数的构造函数
 //因为会有歧义
-class Time
-{
-public:
-	Time(int h = 12, int m = 13, int s = 14);      //声明带默认参数的构造函数
-	void show_time();
-private:         //声明数据对象
-	int hour;
-	int minute;
-	int sec;
-};
+//class Time
+//{
+//public:
+//	Time(int h = 12, int m = 13, int s = 14);      //声明带默认参数的构造函数
+//	void show_time();
+//private:         //声明数据对象
+//	int hour;
+//	int minute;
+//	int sec;
+//};
+//
+////成员函数的定义
+//Time::Time(int h, int m, int s)
+//{
+//	//一一对应private声明的数据对象
+//	hour = h;
+//	minute = m;
+//	sec = s;
+//}
+//
+//void Time::show_time()
+//{
+//	cout << hour << ":"
+//		<< minute << ":"
+//		<< sec << endl;
+//}
+//
+//int main()
+//{
+//	Time t0;
+//	t0.show_time();
+//	Time t1(14);    //建立对象t1，并指定t1的时分秒
+//	t1.show_time();
+//	Time t2(15, 20);     //数据对象直接定义，没有初始化
+//	t2.show_time();
+//	Time t3(15, 20, 21);
+//	t3.show_time();
+//	return 0;
+//}
 
-//成员函数的定义
-Time::Time(int h, int m, int s)
-{
-	//一一对应private声明的数据对象
-	hour = h;
-	minute = m;
-	sec = s;
-}
+//析构函数
 
-void Time::show_time()
-{
-	cout << hour << ":"
-		<< minute << ":"
-		<< sec << endl;
-}
 
-int main()
-{
-	Time t0;
-	t0.show_time();
-	Time t1(14);    //建立对象t1，并指定t1的时分秒
-	t1.show_time();
-	Time t2(15, 20);     //数据对象直接定义，没有初始化
-	t2.show_time();
-	Time t3(15, 20, 21);
-	t3.show_time();
-	return 0;
-}
+//调用构造函数和析构函数的顺序
+
+//对象数组
+
+//对象指针
+
+//指向对象的指针
+
+//指向对象成员的指针
+
+//this指针
+
+//共用数据的保护
+
+//常对象
+
+//常对象成员
+
+//常数据成员
+
+//指向对象的常指针
+
+//指向常对象的指针变量
+
+//对象的常引用
+
+//对象的动态建立和释放
+
+//对象的赋值和赋值
+
+//对象的赋值
+
+//对象的复制
+
+//静态成员
